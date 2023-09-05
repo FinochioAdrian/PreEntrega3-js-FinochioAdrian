@@ -29,8 +29,7 @@ function init() {
     const userResponse = Number(
       prompt(`Sistema Administracion De Comercio
         1. Administración de Productos,
-        2. Administración de Empleados,
-        3. Registrar Venta,
+        2. Funcionalidades no implemetadas (En desarrollo entrega Final)
         4. Salir`)
     );
 
@@ -41,9 +40,9 @@ function init() {
         administracionProductos();
         break;
       case 2:
+        proximasEntregas();
         break;
-      case 3:
-        break;
+
       case 4:
         exit = true;
         break;
@@ -53,6 +52,11 @@ function init() {
 
 init();
 
+function proximasEntregas() {
+  alert(`Funcionalidades para la proxima Entrega
+   2. Administración de Empleados,
+   3. Registrar Venta`);
+}
 function administracionProductos() {
   let exit = false;
   do {
@@ -81,7 +85,7 @@ function administracionProductos() {
         modifyObj(productos);
         break;
       case 5:
-        
+        searchBy(productos);
         break;
       case 6:
         exit = true;
@@ -92,8 +96,20 @@ function administracionProductos() {
     }
   } while (!exit);
 }
-function searchBy (collection){
-
+function searchBy(collection) {
+  if (collection.length > 0) {
+    const keys = collectionPropKeys(collection[0]);
+    
+    const template = newTemplateArr(keys);
+    const keyBuscada=promptAdd(`Buscar Productos por:\n ${template} `,"integer")-1;
+    const propbuscada = promptAdd(`Ingrese la palabra clave o el valor a buscar`)
+    if (keys.length>=keyBuscada && !isNaN(keyBuscada) ){
+      const resultados = viewObjsBy(collection, keys[keyBuscada], propbuscada)
+      console.table(resultados)
+    }
+  } else {
+    alert("No hay elementos para buscar");
+  }
 }
 function viewAllCategory(collection) {
   const category = Array.from(
@@ -114,7 +130,9 @@ function addProducts() {
     const price = Number(promptAdd("Ingrese un Precio"));
     const details = promptAdd("Ingrese los Detalles");
     const stock = parseInt(promptAdd("Ingrese el stock inicial"));
-    const category = promptAdd(`Ingrese una categoria ${viewAllCategory(productos)}`);
+    const category = promptAdd(
+      `Ingrese una categoria ${viewAllCategory(productos)}`
+    );
     addObjeto(
       productos,
       new Producto(id, name, price, details, stock, category)
@@ -131,12 +149,31 @@ function viewAllobjs(collection) {
   console.table(collection);
 }
 
-function promptAdd(mensaje) {
+function promptAdd(mensaje,tipoEsperado="string") {
   let salir = false;
   let respuesta;
   do {
     respuesta = prompt(`${mensaje}`);
-    if (respuesta) {
+    switch (tipoEsperado) {
+      case "string":
+
+        break; 
+      case "integer":
+        respuesta=parseInt(respuesta)
+        tipoEsperado="number"
+        break;
+      case "number":
+        respuesta=Number(respuesta)
+        break;
+      case "float":
+        respuesta=parseFloat(respuesta)
+        tipoEsperado="number"
+        break;
+      
+      default:
+        return
+    }
+    if (respuesta && typeof respuesta == tipoEsperado) {
       salir = true;
     }
   } while (!salir);
@@ -178,6 +215,10 @@ function viewObjById(collection, id) {
   const resultados = collection.filter((obj) => obj.id === id);
   return resultados;
 }
+function viewObjsBy(collection, key, prop) {
+  const resultados = collection.filter((obj) => obj[key] == prop);
+  return resultados;
+}
 
 function modifyObj(collection) {
   const id = parseInt(promptAdd(`Ingrese el id del Elemento a modificar`));
@@ -201,22 +242,22 @@ function modifyObj(collection) {
 
     let indice = collection.findIndex((obj) => obj === objSelected);
     console.log("objeto a modificar", collection[indice]);
-    collection[indice]
+    collection[indice];
     for (const key in collection[indice]) {
       if (Object.hasOwnProperty.call(collection[indice], key)) {
-        if ((typeof collection[indice][key] == "number")) {
-          
-          collection[indice][key] = Number(promptAdd(`Ingrese un ${key}: (${collection[indice][key]})`))
-        }else {
-          collection[indice][key] = promptAdd(`Ingrese un ${key}: (${collection[indice][key]})`)
+        if (typeof collection[indice][key] == "number") {
+          collection[indice][key] = Number(
+            promptAdd(`Ingrese un ${key}: (${collection[indice][key]})`)
+          );
+        } else {
+          collection[indice][key] = promptAdd(
+            `Ingrese un ${key}: (${collection[indice][key]})`
+          );
         }
-        
       }
     }
-    
+
     /* collection.splice(indice, 1); */
-
-
   } else {
     alert("No Existe Elemento con ese Id");
   }
@@ -236,7 +277,7 @@ function precargarObjetos() {
 }
 
 function collectionPropKeys(obj) {
-  Object.keys(obj);
+  return Object.keys(obj);
 }
 
 function newTemplate(collection) {
@@ -257,4 +298,12 @@ function newTemplateObj(obj) {
   }
 
   return templete;
+}
+function newTemplateArr(arr) {
+  return arr
+    .map((ele, index) => {
+      return `${index + 1}. ${ele}`;
+    })
+    .join(" \n ");1
+
 }
