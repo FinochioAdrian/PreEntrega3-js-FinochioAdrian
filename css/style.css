@@ -1,0 +1,31 @@
+:root {
+    --text-size:1.5rem;
+}
+
+nav {
+font-size: var(--text-size);
+font-weight: bolder;
+}
+
+#productos {
+    background-image: linear-gradient(to right, rgba(0, 0, 255, 0.7), rgba(255, 255, 0, 0.7), rgb(255, 0, 0,0.7));
+    width: 100vw;
+    height: 100vh;
+    
+}
+
+
+
+
+.bg-blueLight {
+background-color: #87dfe9;
+}
+
+.producto {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 1em;
+    max-width: 18rem;
+
+}
+
