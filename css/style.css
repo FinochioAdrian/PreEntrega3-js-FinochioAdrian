@@ -26,7 +26,7 @@ nav {
   text-align: center;
   border: 1px solid #ccc;
   padding: 1em;
-  max-width: 18rem;
+  min-width: auto;
   margin: 1rem 1rem;
 }
 
@@ -56,3 +56,34 @@ nav {
   top: -10px;
   right: -15px;
 }
+
+/* Modal Carrito */
+.modal-carrito {
+  position: absolute;
+  right:0;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  /* width: 100px; */
+  min-height: min-content;
+  background-color: aliceblue;
+  z-index: 100;
+  display: none;
+  
+}
+
+.show {
+  display: block;
+}
+
+.bi-trash-fill {
+font-size: 2rem;
+color: red;
+cursor: pointer;
+}
+
+
+@media  screen and (min-heigth: 701px) {
+  
+}
+
