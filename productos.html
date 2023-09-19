@@ -33,49 +33,56 @@
     <div class="card col-6">
       <div class="card-body d-flex justify-content-center">
         <form id="form-productos" class="col-10 m-2">
+          <fieldset class="text-center fw-bold mb-1">Añadir Productos</fieldset>
           <!-- Nombre -->
-          <div class="mb-3 col-auto">
+          <div class="mb-2 col-auto">
             <label for="nameProduct" class="form-label">Nombre Producto <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" name="name" id="nameProduct" aria-describedby="helpId"
-              placeholder=""/>
+            <input type="text" class="form-control form-inputs" name="name" id="nameProduct" aria-describedby="helpId"
+              placeholder="Introduzca un nombre del producto"/>
           </div>
           <!-- Precio -->
-          <div class="mb-3 col-auto">
+          <div class="mb-2 col-auto">
             <label for="priceProduct" class="form-label">Precio <span class="text-danger">*</span></label>
-            <input type="number" class="form-control" name="price" min="0" step="0.1" id="priceProduct"
-              aria-describedby="precio producto" placeholder="$$$$" />
+            <input type="number" class="form-control form-inputs" name="price" min="0" step="0.1" id="priceProduct"
+              aria-describedby="precio producto" placeholder="Ingrese un Precio $$$$" />
           </div>
           <!-- Stock -->
-          <div class="mb-3 col-auto">
+          <div class="mb-2 col-auto">
             <label for="stockProduct" class="form-label">Stock del Producto <span class="text-danger">*</span></label>
-            <input type="number" class="form-control" name="stock" min="1" id="stockProduct" aria-describedby="helpId"
+            <input type="number" class="form-control form-inputs" name="stock" min="1" id="stockProduct" aria-describedby="helpId"
               placeholder="Introduce el Stock del Producto" />
           </div>
           <!-- Categoria -->
-          <div class="mb-3">
+          <div class="mb-2">
             <label for="categoryProduct" class="form-label">Categoría <span class="text-danger">*</span></label>
-            <select class="form-select form-select-lg" name="category" id="categoryProduct">
-              <option selected disabled>Categoría</option>
-              <option value="0">Calzado</option>
-              <option value="1">Remera</option>
-              <option value="2">Buzo</option>
-              <option value="3">Sweter</option>
-              <option value="4">Joggin</option>
+            <select class="form-select  form-inputs" name="category" id="categoryProduct">
+              <option selected disabled value="-1">Categoría</option>
+              <option value="Calzado">Calzado</option>
+              <option value="Remera">Remera</option>
+              <option value="Buzo">Buzo</option>
+              <option value="Sweter">Sweter</option>
+              <option value="Joggin">Joggin</option>
             </select>
           </div>
+          
           <!-- Detalle -->
-          <div class="mb-3">
+          <div class="mb-2">
             <label for="detailsProduct" class="form-label">Descripción Producto <span
                 class="text-danger">*</span></label>
-            <textarea class="form-control" name="details" id="detailsProduct" rows="1"></textarea>
+            <textarea class="form-control form-inputs" name="details" id="detailsProduct" rows="1" placeholder="Introduzca una Descripción"></textarea>
           </div>
           <!-- Image -->
-
           <div class="mb-3">
-            <label for="imageProduct" class="form-label">Imange del Producto</label>
-            <input type="file" class="form-control" name="image" id="imageProduct" placeholder=""
-              aria-describedby="fileHelpId" />
+            <label for="" class="form-label">Url Imgen</label>
+            <input type="url"
+              class="form-control" name="image" id="imageProducts" aria-describedby="helpId" placeholder="https://www.ejemploUrl.com">
+            <small id="helpId" class="form-text text-muted">***Si no se proporciona una URL de imagen se usara favicon por defecto</small>
           </div>
+          <!-- <div class="mb-2">
+            <label for="imageProduct" class="form-label">Imagen del Producto</label>
+            <input type="file" class="form-control form-inputs" name="image" id="imageProduct" placeholder=""
+              aria-describedby="fileHelpId" />
+          </div> -->
           <div class="d-flex justify-content-center">
             <button type="submit" class="btn btn-primary btn-submit btn-lg">
               Enviar

@@ -108,7 +108,7 @@ export default function tienda (){
         modalCarrito.innerHTML += `<div class="card mb-3" >
           <div class="row g-0 align-items-center">
             <div class="col-3">
-              <img src="${image}" class="img-fluid rounded-start" alt="...">
+              <img src="${image}" class="img-fluid rounded-start img-cart" alt="...">
             </div>
             <div class="col-7">
               <div class="card-body">

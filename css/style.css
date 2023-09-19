@@ -1,5 +1,5 @@
 :root {
-  --text-size: 1.5rem;
+  --text-size: 1rem;
 
 }
 
@@ -10,7 +10,7 @@
 }
 
 nav {
-  font-size: var(--text-size);
+  font-size: var(--text-size) ;
   font-weight: bolder;
 }
 
@@ -44,9 +44,16 @@ nav {
 /* simulador de tienda */
 
 #nav-ecommerce {
-  min-height: 4rem;
+  min-height: 2rem;
 }
-
+.card img {
+  max-width: 150px;
+  max-height: 150px;
+}
+.img-cart {
+  max-width: 85px !important;
+  max-height: 85px !important;
+}
 .container-cart {
   position: relative;
   margin-right: 1.5rem;
@@ -101,12 +108,8 @@ font-size: var(--text-size);
 #section_productos div {
   border-radius: 25px;
 }
-.form-label {
-  font-weight: 600;
-}
-.form-control {
-  font-size: var(--text-size);
-}
+
+
 @media  screen and (min-heigth: 701px) {
   
 }
