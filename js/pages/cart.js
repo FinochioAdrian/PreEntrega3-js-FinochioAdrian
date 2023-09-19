@@ -1,5 +1,5 @@
-import { precargarObjetos } from "./productos.js";
-import { guardarStorage, recuperarStorage } from "./storage.js";
+import { precargarObjetos } from "../componentes/productos-component.js";
+import { guardarStorage, recuperarStorage } from "../componentes/storage-component.js";
 
 const listCarrito = document.querySelector(".list-carrito__list");
 

@@ -1,6 +1,7 @@
-import cart from "./componentes/cart.js";
-import index from "./componentes/index.js";
-import tienda from "./componentes/tienda.js";
+import cart from "./pages/cart.js";
+import index from "./pages/index.js";
+import productos from "./pages/productos.js";
+import tienda from "./pages/tienda.js";
 
 
 const pathName = window.location.pathname
@@ -14,6 +15,9 @@ switch (pathName) {
         break;
     case "/cart.html":
     cart()
+        break;
+    case "/productos.html":
+    productos()
         break;
 
     default:
