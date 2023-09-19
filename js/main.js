@@ -5,13 +5,14 @@ import tienda from "./pages/tienda.js";
 
 
 const pathName = window.location.pathname
-
+console.log(pathName)
 switch (pathName) {
     case "/index.html":
         index()
       break;
     case "/tienda.html":
     tienda()
+    console.log("hola que pasa??");
         break;
     case "/cart.html":
     cart()
